@@ -1,0 +1,32 @@
+{% extends 'ToDOList/base.html' %}
+{% load static %}
+
+{% block container %}
+    {% for task in Tasks %}
+    <div class="task">
+        <ul>
+            <a class="category" href="{{ task.get_absolute_url }}"><li class="category licat">{{task}}</li></a>
+            <div class="other">
+                <p>{{task.description}}...</p>
+                {% if task.is_complete == False %}
+                <div class="completeBox">
+                    <a class="complete" href="{% url 'complete' pk=task.id %}">Выполнить</a>
+                </div>
+                {% else %}
+                <div class="notcompleteBox">
+                    <p class="notcomplete">Выполнено</p>
+                </div>
+                
+                {% endif %}
+               
+                
+            </div>
+            
+
+        </ul>
+        
+    </div>
+    
+
+    {% endfor %}
+{% endblock %}

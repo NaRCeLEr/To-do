@@ -1,0 +1,23 @@
+{% extends 'ToDOList/base.html' %}
+
+{% block container %}
+<div class="detail">
+    <div class="important">
+        <h1>{{object.title}}</h1>
+        {% if object.is_complete == False %}
+                <div class="completeBox">
+                    <a class="complete" href="{% url 'complete' pk=object.id %}">Выполнить</a>
+                </div>
+                {% else %}
+                <div class="notcompleteBox">
+                    <p class="notcomplete">Выполнено</p>
+                </div>
+                
+                {% endif %}
+    </div>
+    <h4>{{object.description}}</h4>
+    <h4>{{object.days_number}}</h4>
+    <h4>{{object.category}}</h4>
+</div>
+
+{% endblock %}

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'ToDOList/css/main.css' %}">
+</head>
+<body>
+    <aside>
+        <div class="nav">
+            <a href="{% url 'addtask' %}" class="add">Добавть задание</a>
+            <h3>Catigories</h3>
+            <ul>
+                {% for cat in Cat %}
+                <a class="" href="{{ cat.get_absolute_url }}"><li>{{cat}}</li></a>
+                {% endfor %}
+            </ul>
+        </div>
+        
+    </aside>
+
+
+    <main>
+        {% block container %}
+        {% endblock %}
+    </main>
+
+    
+</body>
+</html>
